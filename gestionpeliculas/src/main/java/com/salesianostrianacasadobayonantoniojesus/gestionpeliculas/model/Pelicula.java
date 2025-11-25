@@ -7,6 +7,7 @@ import org.hibernate.proxy.HibernateProxy;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -33,7 +34,7 @@ public class Pelicula {
             joinColumns = @JoinColumn(name = "pelicula_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id")
     )
-    private List<Actor > actores;
+    private Set<Actor > actores;
 
     @Override
     public final boolean equals(Object o) {

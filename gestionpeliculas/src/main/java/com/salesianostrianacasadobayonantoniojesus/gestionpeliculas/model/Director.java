@@ -6,6 +6,7 @@ import org.hibernate.proxy.HibernateProxy;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -25,7 +26,7 @@ public class Director {
     private Integer anioNacimiento;
 
     @OneToMany(mappedBy = "director")
-    private List<Pelicula > peliculas;
+    private Set<Pelicula > peliculas;
 
 
     @Override

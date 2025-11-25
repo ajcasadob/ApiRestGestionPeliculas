@@ -2,6 +2,7 @@ package com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.dto;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 public record PeliculaResponseDTO(
         Long id,
@@ -9,6 +10,6 @@ public record PeliculaResponseDTO(
         String genero,
         LocalDate fechaEstreno,
         DirectorSimpleDTO director,
-        List<ActorSimpleDTO> reparto
+        Set<ActorSimpleDTO> reparto
 ) {
 }

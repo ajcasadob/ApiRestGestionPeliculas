@@ -6,6 +6,7 @@ import org.hibernate.proxy.HibernateProxy;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -20,7 +21,7 @@ public class Actor {
     private String nombre;
 
     @ManyToMany(mappedBy = "actores")
-    private List<Pelicula> peliculas;
+    private Set<Pelicula> peliculas;
 
 
     @Override
