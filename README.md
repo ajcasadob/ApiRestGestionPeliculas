@@ -11,7 +11,6 @@ API REST desarrollada con **Spring Boot** que permite gestionar un catálogo de 
 - ✅ **CRUD completo** para Directores y Películas
 - ✅ **CRUD básico** para Actores (Crear y Listar)
 - ✅ **Relación Muchos a Muchos** entre Películas y Actores (Reparto)
-- ✅ **Validaciones de negocio** (edad del director, títulos únicos, etc.)
 - ✅ **Gestión centralizada de excepciones** con ProblemDetail (RFC 7807)
 - ✅ **Documentación OpenAPI 3.0** con Swagger UI
 - ✅ **DTOs anidados** para respuestas estructuradas
@@ -51,9 +50,9 @@ Director (1) ──── dirige ───> (N) Película (N) ──── repar
 - **Spring Boot 4.0.0**
   - Spring Web
   - Spring Data JPA
-- **Base de datos H2** (en memoria)
-- **Lombok** (reducción de código boilerplate)
-- **SpringDoc OpenAPI** (documentación automática)
-- **Maven** (gestión de dependencias)
+- **Base de datos H2** 
+- **Lombok** 
+- **SpringDoc OpenAPI** 
+- **Maven** 
 
 ---
