@@ -22,7 +22,7 @@ public class Director {
     private String nombre;
 
 
-    private int anioNacimiento;
+    private Integer anioNacimiento;
 
     @OneToMany(mappedBy = "director")
     private List<Pelicula > peliculas;
