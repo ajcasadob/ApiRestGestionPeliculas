@@ -1,6 +1,7 @@
 package com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.dto;
 
 
+import com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.model.Director;
 import com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.model.Pelicula;
 
 import java.time.LocalDate;
@@ -14,12 +15,12 @@ public record PeliculaRequestDTO(
 
 ) {
 
-    public Pelicula toEntity() {
+    public Pelicula toEntity(Director director) {
         return Pelicula.builder()
                 .titulo(titulo)
                 .genero(genero)
                 .fechaEstreno(fechaEstreno)
-                .id(directorId)
+                .director(director)
                 .build();
     }
 }

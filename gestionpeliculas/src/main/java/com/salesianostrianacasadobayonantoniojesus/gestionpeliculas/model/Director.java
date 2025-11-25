@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -25,8 +26,9 @@ public class Director {
 
     private Integer anioNacimiento;
 
+    @Builder.Default
     @OneToMany(mappedBy = "director")
-    private Set<Pelicula > peliculas;
+    private Set<Pelicula > peliculas = new HashSet<>();
 
 
     @Override

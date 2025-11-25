@@ -2,13 +2,12 @@ package com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.dto;
 
 import com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.model.Actor;
 
-public record ActorSimpleDTO(
+public record ActorResponseDTO(
         Long id,
         String nombre
 ) {
-
-    public static ActorSimpleDTO of (Actor actor){
-        return new ActorSimpleDTO(
+    public static ActorResponseDTO of (Actor actor){
+        return new ActorResponseDTO(
                 actor.getId(),
                 actor.getNombre()
         );

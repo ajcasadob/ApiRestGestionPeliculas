@@ -1,8 +1,10 @@
 package com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.dto;
 
+import com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.model.Pelicula;
+
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public record PeliculaResponseDTO(
         Long id,
@@ -10,6 +12,20 @@ public record PeliculaResponseDTO(
         String genero,
         LocalDate fechaEstreno,
         DirectorSimpleDTO director,
-        Set<ActorSimpleDTO> reparto
+        Set<ActorSimpleDTO> actores
 ) {
+
+    public static PeliculaResponseDTO of (Pelicula pelicula){
+        return new PeliculaResponseDTO(
+                pelicula.getId(),
+                pelicula.getTitulo(),
+                pelicula.getGenero(),
+                pelicula.getFechaEstreno(),
+                DirectorSimpleDTO.of(pelicula.getDirector()),
+                pelicula.getActores()
+                        .stream()
+                        .map(ActorSimpleDTO::of)
+                        .collect(Collectors.toSet())
+        );
+    }
 }

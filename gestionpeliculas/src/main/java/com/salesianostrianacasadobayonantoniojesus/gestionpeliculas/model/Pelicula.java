@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -28,13 +29,14 @@ public class Pelicula {
     @JoinColumn(name = "director_id")
     private Director director;
 
+    @Builder.Default
     @ManyToMany
     @JoinTable(
             name = "pelicula_actor",
             joinColumns = @JoinColumn(name = "pelicula_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id")
     )
-    private Set<Actor > actores;
+    private Set<Actor > actores = new HashSet<>();
 
     @Override
     public final boolean equals(Object o) {

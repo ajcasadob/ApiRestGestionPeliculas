@@ -2,7 +2,6 @@ package com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.error;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -13,41 +12,84 @@ import java.net.URI;
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
+
+    private static final String BASE_URI = "https://api.peliculas.com/errors/";
+
     @ExceptionHandler(EntidadNoEncontradaException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ProblemDetail  handleEntidadNotFound (EntidadNoEncontradaException ex){
 
 
-        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage()
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage()
 
 
         );
 
-        problem.setTitle("Entidad no encontrada");
-        problem.setType(URI.create("http://dam.salesianos-triana.com/entidad-no-encontrada"));
+        problemDetail.setTitle("Entidad no encontrada");
+        problemDetail.setType(URI.create(BASE_URI+"/not-found"));
 
-        return problem;
+        return problemDetail;
     }
 
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ExceptionHandler(PeliculaYaExisteException.class)
+    public ProblemDetail handlePeliculaYaExiste(PeliculaYaExisteException ex ){
+
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                HttpStatus.CONFLICT,
+                ex.getMessage()
+        );
+
+        problemDetail.setTitle("Película ya existe");
+        problemDetail.setType(URI.create(BASE_URI+"/pelicula-duplicada"));
+
+        return problemDetail;
+
+    }
+
+    @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(ActorYaEnRepartoException.class)
-    public ProblemDetail handleActorYaEnReparto (ActorYaEnRepartoException ex){
-        ProblemDetail problem = ProblemDetail.forStatusAndDetail(
-                HttpStatus.BAD_REQUEST, ex.getMessage()
+    public ProblemDetail handleActorYaEnReparto(ActorYaEnRepartoException ex){
+
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                HttpStatus.CONFLICT,
+                ex.getMessage()
         );
 
-        problem.setTitle("Actor ya en reparto");
-        problem.setType(URI.create("http://dam.salesianos-triana.com/actor-en-reparto"));
+        problemDetail.setTitle("Actor ya existe en el reparto");
+        problemDetail.setType(URI.create(BASE_URI+"/actor-duplicado"));
 
-        return problem;
+        return problemDetail;
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(DirectorMenorEdadExcepetion.class)
+    public ProblemDetail handleDirectorMenorEdad(DirectorMenorEdadExcepetion ex) {
+
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                HttpStatus.BAD_REQUEST,
+                ex.getMessage()
+        );
+
+        problemDetail.setTitle("Director menor de edad");
+        problemDetail.setType(URI.create(BASE_URI + "/director-menor-edad"));
+
+        return problemDetail;
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(IllegalArgumentException.class)
-    public ProblemDetail handleDirectorMenorEdadException (IllegalArgumentException ex){
+    public ProblemDetail handleIllegalArgumnent(IllegalArgumentException ex){
 
-        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,
-                ex.getMessage());
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                HttpStatus.BAD_REQUEST,
+                ex.getMessage()
+        );
 
-        return problem;
+        problemDetail.setTitle("Argumento inválido");
+        problemDetail.setType(URI.create(BASE_URI+"/bad-request"));
+
+        return problemDetail;
     }
 
 }
