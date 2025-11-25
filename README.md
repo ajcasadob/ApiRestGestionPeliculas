@@ -47,11 +47,10 @@ Director (1) ──── dirige ───> (N) Película (N) ──── repar
 
 ## 🚀 Tecnologías Utilizadas
 
-- **Java 17**
-- **Spring Boot 3.2.0**
+- **Java 21**
+- **Spring Boot 4.0.0**
   - Spring Web
   - Spring Data JPA
-  - Spring Validation
 - **Base de datos H2** (en memoria)
 - **Lombok** (reducción de código boilerplate)
 - **SpringDoc OpenAPI** (documentación automática)
