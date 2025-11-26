@@ -9,7 +9,5 @@ import java.util.Optional;
 public interface PeliculaRepository extends JpaRepository<Pelicula,Long> {
 
     boolean existsByTitulo(String titulo);
-    boolean existsByTituloIgnoreCase(String titulo);            // si quieres case-insensitive
-    boolean existsByTituloAndIdNot(String titulo, Long id);     // útil en actualizaciones
-    Optional<Pelicula> findByTitulo(String titulo);
+
 }

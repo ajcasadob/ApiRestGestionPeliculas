@@ -25,7 +25,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         );
 
         problemDetail.setTitle("Entidad no encontrada");
-        problemDetail.setType(URI.create(BASE_URI+"/no-encontrado"));
+        problemDetail.setType(URI.create(BASE_URI+"/not-found"));
 
         return problemDetail;
     }
