@@ -15,4 +15,8 @@ public class DirectorMenorEdadExcepetion extends RuntimeException {
         super("Este director es menor de edad");
     }
 
+
+    public DirectorMenorEdadExcepetion(String nombre, int edad, int anioEstreno) {
+        super(String.format("El director '%s' con edad %d no puede dirigir una pelicula estrenada en %d porque es menor de edad", nombre, edad, anioEstreno));
+    }
 }

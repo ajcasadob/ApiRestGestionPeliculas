@@ -9,5 +9,7 @@ public class EntidadNoEncontradaException extends RuntimeException {
         super(String.format("%s con ID %d no encontrado", entidad, id));
     }
 
-
+    public EntidadNoEncontradaException( Long id) {
+        super(String.format(" Con ID %d no encontrado",  id));
+    }
 }

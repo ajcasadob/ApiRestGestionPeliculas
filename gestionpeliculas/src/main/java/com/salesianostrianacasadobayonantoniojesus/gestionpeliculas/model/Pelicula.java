@@ -25,8 +25,8 @@ public class Pelicula {
     private String genero;
     private LocalDate fechaEstreno;
 
-    @ManyToOne
-    @JoinColumn(name = "director_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "director_id"  )
     private Director director;
 
     @Builder.Default
