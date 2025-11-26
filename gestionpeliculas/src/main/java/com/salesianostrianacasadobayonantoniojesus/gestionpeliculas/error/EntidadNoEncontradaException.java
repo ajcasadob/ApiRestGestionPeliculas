@@ -1,13 +1,13 @@
 package com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.error;
 
 public class EntidadNoEncontradaException extends RuntimeException {
-    public EntidadNoEncontradaException(String message) {
-        super(message);
+    public EntidadNoEncontradaException(String mensaje) {
+        super(mensaje);
     }
-    public EntidadNoEncontradaException(Long id) {
-        super("Entidad no encontrada"+id);
+
+    public EntidadNoEncontradaException(String entidad, Long id) {
+        super(String.format("%s con ID %d no encontrado", entidad, id));
     }
-    public EntidadNoEncontradaException() {
-        super("Entidad no encontrada");
-    }
+
+
 }
