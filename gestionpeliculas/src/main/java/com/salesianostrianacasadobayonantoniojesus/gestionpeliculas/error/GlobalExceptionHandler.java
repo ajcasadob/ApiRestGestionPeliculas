@@ -16,7 +16,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     private static final String BASE_URI = "https://api.peliculas.com/errors/";
 
     @ExceptionHandler(EntidadNoEncontradaException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
     public ProblemDetail  handleEntidadNotFound (EntidadNoEncontradaException ex){
 
 
@@ -26,12 +25,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         );
 
         problemDetail.setTitle("Entidad no encontrada");
-        problemDetail.setType(URI.create(BASE_URI+"/not-found"));
+        problemDetail.setType(URI.create(BASE_URI+"/no-encontrado"));
 
         return problemDetail;
     }
 
-    @ResponseStatus(HttpStatus.CONFLICT)
+
     @ExceptionHandler(PeliculaYaExisteException.class)
     public ProblemDetail handlePeliculaYaExiste(PeliculaYaExisteException ex ){
 
@@ -47,7 +46,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     }
 
-    @ResponseStatus(HttpStatus.CONFLICT)
+
     @ExceptionHandler(ActorYaEnRepartoException.class)
     public ProblemDetail handleActorYaEnReparto(ActorYaEnRepartoException ex){
 
@@ -62,7 +61,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return problemDetail;
     }
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+
     @ExceptionHandler(DirectorMenorEdadExcepetion.class)
     public ProblemDetail handleDirectorMenorEdad(DirectorMenorEdadExcepetion ex) {
 
@@ -77,7 +76,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return problemDetail;
     }
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+
     @ExceptionHandler(IllegalArgumentException.class)
     public ProblemDetail handleIllegalArgumnent(IllegalArgumentException ex){
 

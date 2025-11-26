@@ -27,7 +27,7 @@ public class Director {
     private Integer anioNacimiento;
 
     @Builder.Default
-    @OneToMany(mappedBy = "director", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "director")
     private Set<Pelicula > peliculas = new HashSet<>();
 
 

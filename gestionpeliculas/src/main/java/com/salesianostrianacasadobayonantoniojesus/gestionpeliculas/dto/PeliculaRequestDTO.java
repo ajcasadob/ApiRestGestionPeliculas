@@ -15,12 +15,11 @@ public record PeliculaRequestDTO(
 
 ) {
 
-    public Pelicula toEntity(Director director) {
+    public Pelicula toEntity() {
         return Pelicula.builder()
                 .titulo(titulo)
                 .genero(genero)
                 .fechaEstreno(fechaEstreno)
-                .director(director)
                 .build();
     }
 }

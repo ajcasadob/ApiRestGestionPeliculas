@@ -38,6 +38,16 @@ public class Pelicula {
     )
     private Set<Actor > actores = new HashSet<>();
 
+    public void addActor(Actor actor) {
+        this.actores.add(actor);
+        actor.getPeliculas().add(this);
+    }
+
+    public void removeActor(Actor actor) {
+        this.actores.remove(actor);
+        actor.getPeliculas().remove(this);
+    }
+
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;

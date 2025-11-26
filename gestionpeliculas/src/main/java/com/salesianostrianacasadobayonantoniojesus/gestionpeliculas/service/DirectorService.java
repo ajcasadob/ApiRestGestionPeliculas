@@ -1,6 +1,7 @@
 package com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.service;
 
 import com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.dto.DirectorRequestDTO;
+import com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.error.DirectorNoEncontradoException;
 import com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.error.EntidadNoEncontradaException;
 import com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.model.Director;
 import com.salesianostrianacasadobayonantoniojesus.gestionpeliculas.repository.DirectorRepository;
@@ -14,21 +15,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DirectorService {
 
-
     private final DirectorRepository directorRepository;
 
     public List<Director> getAll(){
         List<Director> result = directorRepository.findAll();
 
         if(result.isEmpty()){
-            throw new EntidadNoEncontradaException("No se han encontrado directores");
+            throw new DirectorNoEncontradoException("No se han encontrado directores");
         }
-        return  result;
+        return result;
     }
 
     public Director getById(Long id) {
         return directorRepository.findById(id)
-                .orElseThrow(() -> new EntidadNoEncontradaException(id));
+                .orElseThrow(() -> new DirectorNoEncontradoException(id));
     }
 
     public Director create(DirectorRequestDTO dto) {
@@ -50,12 +50,12 @@ public class DirectorService {
                     d.setAnioNacimiento(dto.anioNacimiento());
                     return directorRepository.save(d);
                 })
-                .orElseThrow(() -> new EntidadNoEncontradaException(id));
+                .orElseThrow(() -> new DirectorNoEncontradoException(id));
     }
 
     public void delete(Long id) {
         Director d = directorRepository.findById(id)
-                .orElseThrow(() -> new EntidadNoEncontradaException(id));
+                .orElseThrow(() -> new DirectorNoEncontradoException(id));
         directorRepository.deleteById(id);
     }
 

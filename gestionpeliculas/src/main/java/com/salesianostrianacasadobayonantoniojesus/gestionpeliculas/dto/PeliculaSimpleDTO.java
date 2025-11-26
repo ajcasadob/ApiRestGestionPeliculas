@@ -6,17 +6,14 @@ import java.time.LocalDate;
 
 public record PeliculaSimpleDTO(
         Long id,
-        String titulo,
-        String genero,
-        LocalDate fechaEstreno
+        String titulo
 
 ) {
     public static PeliculaSimpleDTO of (Pelicula pelicula){
         return new PeliculaSimpleDTO(
                 pelicula.getId(),
-                pelicula.getTitulo(),
-                pelicula.getGenero(),
-                pelicula.getFechaEstreno()
+                pelicula.getTitulo()
+
         );
     }
 }

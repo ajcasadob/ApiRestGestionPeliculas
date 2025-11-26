@@ -22,7 +22,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/directores/")
+@RequestMapping("/api/v1/directores")
 @Tag(name = "Directores", description = "El controlador de directores  para poder realizar todas las operaciones de gestión")
 public class DirectorController {
 
@@ -42,12 +42,20 @@ public class DirectorController {
                                         {
                                             "id": 1,
                                             "nombre": "Christopher Nolan",
-                                            "anioNacimiento": 1970
+                                            "anioNacimiento": 1970,
+                                            "peliculas": [
+                                            {"id": 1, "titulo": "Inception"},
+                                            {"id": 2, "titulo": "Interstellar"}
+                                             ]
                                         },
                                         {
                                             "id": 2,
                                             "nombre": "Steven Spielberg",
-                                            "anioNacimiento": 1946
+                                            "anioNacimiento": 1946,
+                                            "peliculas":[
+                                            {"id": 3, "titulo": "Jurassic Park"}
+                                    
+                                            ]
                                         }
                                     ]
                                     """)
@@ -93,7 +101,11 @@ public class DirectorController {
                                                     {
                                                         "id": 1,
                                                         "nombre": "Christopher Nolan",
-                                                        "anioNacimiento": 1970
+                                                        "anioNacimiento": 1970,
+                                                        "peliculas": [
+                                                             {"id": 1, "titulo": "Inception"},
+                                                             {"id": 2, "titulo": "Interstellar"}
+                                                             ]
                                                     }
                                                     """
                                     )
@@ -128,6 +140,47 @@ public class DirectorController {
     }
 
     @PostMapping
+    @Operation(summary = "Endpoint para crear un nuevo director")
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Director creado exitosamente",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = DirectorResponseDTO.class),
+                            examples = @ExampleObject(
+                                    value = """
+                    {
+                        "id": 1,
+                        "nombre": "Christopher Nolan",
+                        "anioNacimiento": 1970,
+                        "peliculas": []
+                    }
+                    """
+                            )
+                    )
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Datos inválidos o falta el nombre del director",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class),
+                            examples = @ExampleObject(
+                                    value = """
+                    {
+                        "type": "https://api.peliculas.com/errors/bad-request",
+                        "title": "Argumento inválido",
+                        "status": 400,
+                        "detail": "Falta el campo del nombre del director",
+                        "instance": "/api/v1/directores"
+                    }
+                    """
+                            )
+                    )
+            )
+    })
+
     public ResponseEntity<DirectorResponseDTO> create(
             @io.swagger.v3.oas.annotations.parameters.RequestBody(
                     description = "Datos necesarios para crear un nuevo director",
@@ -152,6 +205,57 @@ public class DirectorController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Endpoint para editar un director existente")
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Director actualizado exitosamente",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = DirectorResponseDTO.class),
+                            examples = @ExampleObject(
+                                    value = """
+                    {
+                        "id": 1,
+                        "nombre": "Christopher Nolan",
+                        "anioNacimiento": 1970,
+                        "peliculas": [
+                            {"id": 1, "titulo": "Inception"}
+                        ]
+                    }
+                    """
+                            )
+                    )
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Director no encontrado",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class),
+                            examples = @ExampleObject(
+                                    value = """
+                    {
+                        "type": "https://api.peliculas.com/errors/not-found",
+                        "title": "Entidad no encontrada",
+                        "status": 404,
+                        "detail": "Director con ID 99 no encontrado",
+                        "instance": "/api/v1/directores/99"
+                    }
+                    """
+                            )
+                    )
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Datos inválidos",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class)
+                    )
+            )
+    })
+
     public ResponseEntity<DirectorResponseDTO> edit(
             @PathVariable Long id,
             @io.swagger.v3.oas.annotations.parameters.RequestBody(
@@ -179,7 +283,33 @@ public class DirectorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id) {
+    @Operation(summary = "Endpoint para eliminar un director")
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "204",
+                    description = "Director eliminado exitosamente"
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Director no encontrado",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class),
+                            examples = @ExampleObject(
+                                    value = """
+                    {
+                        "type": "https://api.peliculas.com/errors/not-found",
+                        "title": "Entidad no encontrada",
+                        "status": 404,
+                        "detail": "Director con ID 99 no encontrado",
+                        "instance": "/api/v1/directores/99"
+                    }
+                    """
+                            )
+                    )
+            )
+    })
+        public ResponseEntity<?> delete(@PathVariable Long id) {
         directorService.delete(id);
         return ResponseEntity.noContent().build();
     }

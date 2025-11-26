@@ -39,19 +39,22 @@ public class ActorController {
                             array = @ArraySchema(schema = @Schema(implementation = ActorResponseDTO.class)),
                             examples = @ExampleObject(value = """
                                     [
-                                        {
-                                            "id": 1,
-                                            "nombre": "Leonardo DiCaprio"
-                                        },
-                                        {
-                                            "id": 2,
-                                            "nombre": "Ellen Page"
-                                        },
-                                        {
-                                            "id": 3,
-                                            "nombre": "Tom Hardy"
-                                        }
-                                    ]
+                                             {
+                                                 "id": 1,
+                                                 "nombre": "Leonardo DiCaprio",
+                                                 "peliculas": [
+                                                     {"id": 1, "titulo": "Inception"},
+                                                     {"id": 2, "titulo": "The Wolf of Wall Street"}
+                                                 ]
+                                             },
+                                             {
+                                                 "id": 2,
+                                                 "nombre": "Ellen Page",
+                                                 "peliculas": [
+                                                     {"id": 1, "titulo": "Inception"}
+                                                 ]
+                                             }
+                                         ]
                                     """)
                     )
             ),
@@ -94,7 +97,11 @@ public class ActorController {
                                             value = """
                                                     {
                                                         "id": 1,
-                                                        "nombre": "Leonardo DiCaprio"
+                                                        "nombre": "Leonardo DiCaprio",
+                                                        "peliculas": [
+                                                        {"id": 1, "titulo": "Inception"},
+                                                        {"id": 2, "titulo": "The Wolf of Wall Street"}
+                                                        ]
                                                     }
                                                     """
                                     )
@@ -140,9 +147,10 @@ public class ActorController {
                             examples = @ExampleObject(
                                     value = """
                                             {
-                                                "id": 1,
-                                                "nombre": "Leonardo DiCaprio"
-                                            }
+                                               "id": 1,
+                                               "nombre": "Leonardo DiCaprio",
+                                               "peliculas": []
+                                                     }
                                             """
                             )
                     )
