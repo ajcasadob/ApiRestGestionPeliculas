@@ -880,7 +880,7 @@ La colección `API-Peliculas.postman_collection.json` incluye:
 
 1.  Abrir **Postman**
 2. Click en **Import**
-3. Seleccionar el archivo `API-Peliculas.postman_collection.json`
+3. Seleccionar el archivo `ApiGestiónPeliculas.postman_collection.json`
 4. La colección estará lista para usar
 
 > 💡 **Tip**: La colección incluye variables de entorno con `baseUrl=http://localhost:8080/api/v1/` que puedes modificar según tu configuración.
