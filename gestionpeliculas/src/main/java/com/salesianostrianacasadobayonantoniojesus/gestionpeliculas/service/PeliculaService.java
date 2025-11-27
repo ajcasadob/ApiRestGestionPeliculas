@@ -39,8 +39,7 @@ public class PeliculaService {
     }
 
     public Pelicula create(PeliculaRequestDTO dto) {
-        int edad = 18;
-        int edadDirector;
+
 
         if (!StringUtils.hasText(dto.titulo())) {
             throw new IllegalArgumentException("Falta el campo del título de la película");
@@ -54,9 +53,9 @@ public class PeliculaService {
                 .orElseThrow(() -> new DirectorNoEncontradoException(dto.directorId()));
 
 
-        edadDirector = dto.fechaEstreno().getYear() - d.getAnioNacimiento();
-        if (edadDirector < edad) {
-            throw new DirectorMenorEdadExcepetion(d.getNombre(), edadDirector, dto.fechaEstreno().getYear());
+
+        if (!d.esMayorDeEdad(dto.fechaEstreno().getYear())) {
+            throw new DirectorMenorEdadExcepetion(d.getNombre(), d.calcularEdad(dto.fechaEstreno().getYear()), dto.fechaEstreno().getYear());
         }
 
         Pelicula p = dto.toEntity();
@@ -66,8 +65,6 @@ public class PeliculaService {
     }
 
     public Pelicula edit(Long idPelicula, PeliculaRequestDTO dto) {
-        int edad = 18;
-        int edadDirector;
 
         if (!StringUtils.hasText(dto.titulo())) {
             throw new IllegalArgumentException("Falta el campo del título de la película");
@@ -85,9 +82,9 @@ public class PeliculaService {
                 .orElseThrow(() -> new DirectorNoEncontradoException(dto.directorId()));
 
 
-        edadDirector = dto.fechaEstreno().getYear() - d.getAnioNacimiento();
-        if (edadDirector < edad) {
-            throw new DirectorMenorEdadExcepetion(d.getNombre(), edadDirector, dto.fechaEstreno().getYear());
+
+        if (!d.esMayorDeEdad(dto.fechaEstreno().getYear())) {
+            throw new DirectorMenorEdadExcepetion(d.getNombre(), d.calcularEdad(dto.fechaEstreno().getYear()), dto.fechaEstreno().getYear());
         }
 
         peliculaActual.setTitulo(dto.titulo());

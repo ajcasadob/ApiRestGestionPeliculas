@@ -30,6 +30,15 @@ public class Director {
     @OneToMany(mappedBy = "director")
     private Set<Pelicula > peliculas = new HashSet<>();
 
+    private static final int EDAD_MINIMA = 18;
+
+    public int calcularEdad(int anioActual) {
+        return anioActual - this.anioNacimiento;
+    }
+
+    public boolean esMayorDeEdad(int anioActual) {
+        return calcularEdad(anioActual) >= EDAD_MINIMA;
+    }
 
     @Override
     public final boolean equals(Object o) {
