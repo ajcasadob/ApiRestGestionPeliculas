@@ -13,7 +13,7 @@ import java.net.URI;
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 
-    private static final String BASE_URI = "https://api.peliculas.com/errors/";
+    private static final String BASE_URI = "https://api.peliculas.com/errors";
 
     @ExceptionHandler(EntidadNoEncontradaException.class)
     public ProblemDetail  handleEntidadNotFound (EntidadNoEncontradaException ex){
