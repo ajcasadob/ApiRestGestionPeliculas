@@ -16,6 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class Pelicula {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,11 +29,13 @@ public class Pelicula {
 
     private LocalDate fechaEstreno;
 
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "director_id"  )
     private Director director;
 
     @Builder.Default
+    @ToString.Exclude
     @ManyToMany
     @JoinTable(
             name = "pelicula_actor",

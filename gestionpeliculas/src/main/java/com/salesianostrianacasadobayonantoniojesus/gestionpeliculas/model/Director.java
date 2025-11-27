@@ -15,6 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Builder
+@ToString
 public class Director {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +28,7 @@ public class Director {
     private Integer anioNacimiento;
 
     @Builder.Default
+    @ToString.Exclude
     @OneToMany(mappedBy = "director")
     private Set<Pelicula > peliculas = new HashSet<>();
 
