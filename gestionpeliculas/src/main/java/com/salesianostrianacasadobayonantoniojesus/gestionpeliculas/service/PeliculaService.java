@@ -54,7 +54,7 @@ public class PeliculaService {
                 .orElseThrow(() -> new DirectorNoEncontradoException(dto.directorId()));
 
 
-         edadDirector = dto.fechaEstreno().getYear() - d.getAnioNacimiento();
+        edadDirector = dto.fechaEstreno().getYear() - d.getAnioNacimiento();
         if (edadDirector < edad) {
             throw new DirectorMenorEdadExcepetion(d.getNombre(), edadDirector, dto.fechaEstreno().getYear());
         }
@@ -85,7 +85,7 @@ public class PeliculaService {
                 .orElseThrow(() -> new DirectorNoEncontradoException(dto.directorId()));
 
 
-         edadDirector = dto.fechaEstreno().getYear() - d.getAnioNacimiento();
+        edadDirector = dto.fechaEstreno().getYear() - d.getAnioNacimiento();
         if (edadDirector < edad) {
             throw new DirectorMenorEdadExcepetion(d.getNombre(), edadDirector, dto.fechaEstreno().getYear());
         }
@@ -105,7 +105,6 @@ public class PeliculaService {
     }
 
 
-
     public Pelicula addActorToPelicula(Long peliculaId, Long actorId) {
         Pelicula p = peliculaRepository.findById(peliculaId)
                 .orElseThrow(() -> new PeliculaNoEncontradaException(peliculaId));
@@ -121,10 +120,6 @@ public class PeliculaService {
 
         return peliculaRepository.save(p);
     }
-
-
-
-
 
 
 }
