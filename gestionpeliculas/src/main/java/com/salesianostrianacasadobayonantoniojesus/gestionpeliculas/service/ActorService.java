@@ -39,25 +39,7 @@ public class ActorService {
         return actorRepository.save(dto.toEntity());
     }
 
-    public Actor edit(Long id, ActorRequestDTO dto) {
-        if (!StringUtils.hasText(dto.nombre())) {
-            throw new IllegalArgumentException("Falta el campo del nombre del actor");
-        }
 
-        return actorRepository.findById(id)
-                .map(a -> {
-                    a.setNombre(dto.nombre());
-                    return actorRepository.save(a);
-                })
-                .orElseThrow(() -> new ActorNoEncontradoException(id));
-    }
-
-    public void delete(Long id) {
-        if (!actorRepository.existsById(id)) {
-            throw new ActorNoEncontradoException(id);
-        }
-        actorRepository.deleteById(id);
-    }
 
 
 

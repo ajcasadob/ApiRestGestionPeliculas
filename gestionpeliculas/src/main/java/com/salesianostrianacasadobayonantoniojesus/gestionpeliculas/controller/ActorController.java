@@ -128,6 +128,7 @@ public class ActorController {
                     )
             }
     )
+    @Operation(summary = "Endpoint para obtener un actor por su ID")
     @GetMapping("/{id}")
     public ResponseEntity<ActorResponseDTO> getById(@PathVariable Long id) {
         return ResponseEntity.ok(

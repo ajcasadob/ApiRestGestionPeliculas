@@ -132,6 +132,7 @@ public class DirectorController {
                     )
             }
     )
+    @Operation(summary = "Endpoint para obtener un director por su ID")
     @GetMapping("/{id}")
     public ResponseEntity<DirectorResponseDTO> getById(@PathVariable Long id) {
         return ResponseEntity.ok(
