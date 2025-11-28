@@ -2,7 +2,7 @@
 
 ![Java](https://img.shields.io/badge/Java-21-orange?logo=openjdk)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.0-brightgreen?logo=springboot)
-![Maven](https://img.shields.io/badge/Maven-4.0.0-C71A36?logo=apachemaven)
+![Maven](https://img.shields.io/badge/Maven-3.9.0-C71A36?logo=apachemaven)
 ![H2](https://img.shields.io/badge/H2-Database-blue)
 ![Swagger](https://img.shields.io/badge/OpenAPI-3.0-85EA2D?logo=swagger)
 ![License](https://img.shields.io/badge/license-MIT-blue)
@@ -283,7 +283,7 @@ Todas mapeadas a **ProblemDetail (RFC 7807)**:
 | **H2 Database** | (runtime) | Base de datos en memoria |
 | **Lombok** | (incluido) | Reducción de código boilerplate |
 | **SpringDoc OpenAPI** | 2.8.14 | Documentación automática Swagger |
-| **Maven** | 4.0.0 | Gestión de dependencias |
+| **Maven** | 3.9.0 | Gestión de dependencias |
 
 ### 📦 Dependencias Principales (pom.xml)
 
