@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/directores")
-@Tag(name = "Directores", description = "El controlador de directores  para poder realizar todas las operaciones de gestión")
+@Tag(name = "Directores", description = "El controlador de directores, para poder realizar todas las operaciones de gestión")
 public class DirectorController {
 
     private final DirectorService directorService;

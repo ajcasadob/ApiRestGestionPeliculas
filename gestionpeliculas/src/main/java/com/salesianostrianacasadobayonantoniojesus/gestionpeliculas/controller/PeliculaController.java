@@ -23,7 +23,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@Tag(name = "Películas", description = "El controlador de películas para poder realizar las operaciones de gestión")
+@Tag(name = "Películas", description = "El controlador de películas, para poder realizar las operaciones de gestión")
 @RequestMapping("/api/v1/peliculas")
 public class PeliculaController {
 
