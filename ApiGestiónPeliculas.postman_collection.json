@@ -46,6 +46,23 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Obtener un actor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}actores/1",
+							"host": [
+								"{{URL_BASE}}actores"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -260,6 +277,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{URL_BASE}}peliculas/1/actores/1",
 							"host": [
