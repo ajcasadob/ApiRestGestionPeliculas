@@ -1,340 +1,359 @@
 {
 	"info": {
-		"_postman_id": "8f5300fd-c784-4921-b4c2-0229799d7a31",
-		"name": "ApiGestiónPeliculas",
+		"name": "API Gestión Películas",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "49430739",
-		"_collection_link": "https://ajcasadob-5441184.postman.co/workspace/Antonio's-Workspace~6e8a1d4e-e95f-40de-80aa-60e78a6f6788/collection/49430739-8f5300fd-c784-4921-b4c2-0229799d7a31?action=share&source=collection_link&creator=49430739"
+		"_postman_id": "123456-abcdef-7890-ghijklmnop"
 	},
 	"item": [
-		{
-			"name": "Actor",
-			"item": [
-				{
-					"name": "Obtener todos",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL_BASE}}actores",
-							"host": [
-								"{{URL_BASE}}actores"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Crear actores",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Leonardo DiCaprio\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL_BASE}}",
-							"host": [
-								"{{URL_BASE}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Obtener un actor",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL_BASE}}actores/1",
-							"host": [
-								"{{URL_BASE}}actores"
-							],
-							"path": [
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
 		{
 			"name": "Director",
 			"item": [
 				{
-					"name": "Obtener todos",
+					"name": "Crear Director",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL_BASE}}directores",
-							"host": [
-								"{{URL_BASE}}directores"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Obtener un director",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL_BASE}}directores/1",
-							"host": [
-								"{{URL_BASE}}directores"
-							],
-							"path": [
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Editar un director",
-					"request": {
-						"method": "PUT",
-						"header": [],
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"Christopher Nolan(Actulizado)\",\r\n    \"anioNacimiento\": 1970,\r\n    \"peliculas\": [\r\n        {\r\n            \"id\": 1,\r\n            \"titulo\": \"Inception\"\r\n        }\r\n    ]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n  \"nombre\": \"Christopher Nolan\",\n  \"anioNacimiento\": 1970\n}"
 						},
 						"url": {
-							"raw": "{{URL_BASE}}directores/1",
+							"raw": "http://localhost:8080/api/v1/directores",
+							"protocol": "http",
 							"host": [
-								"{{URL_BASE}}directores"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
+								"api",
+								"v1",
+								"directores"
+							]
+						}
+					}
+				},
+				{
+					"name": "Listar Directores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/directores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"directores"
+							]
+						}
+					}
+				},
+				{
+					"name": "Obtener Director por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/directores/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"directores",
 								"1"
 							]
 						}
-					},
-					"response": []
+					}
 				},
 				{
-					"name": "Eliminar un director",
+					"name": "Actualizar Director",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Christopher Nolan (Updated)\",\n  \"anioNacimiento\": 1970\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/directores/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"directores",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Eliminar Director",
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Christopher Nolan\",\r\n  \"anioNacimiento\": 1970\r\n}"
-						},
 						"url": {
-							"raw": "{{URL_BASE}}directores/1",
+							"raw": "http://localhost:8080/api/v1/directores/1",
+							"protocol": "http",
 							"host": [
-								"{{URL_BASE}}directores"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
+								"api",
+								"v1",
+								"directores",
 								"1"
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "Crear director",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Christopher Nolan\",\r\n  \"anioNacimiento\": 1970\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL_BASE}}directores",
-							"host": [
-								"{{URL_BASE}}directores"
-							]
-						}
-					},
-					"response": []
+					}
 				}
 			]
 		},
 		{
-			"name": "Pelicula",
+			"name": "Actor",
 			"item": [
 				{
-					"name": "Obtener una pelicula",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"titulo\": \"Inception\",\r\n  \"genero\": \"Ciencia Ficción\",\r\n  \"fechaEstreno\": \"2010-07-16\",\r\n  \"directorId\": 1\r\n}"
-						},
-						"url": {
-							"raw": "{{URL_BASE}}peliculas/1",
-							"host": [
-								"{{URL_BASE}}peliculas"
-							],
-							"path": [
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Obtener todas las peliculas",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Christopher Nolan\",\r\n  \"anioNacimiento\": 1970\r\n}"
-						},
-						"url": {
-							"raw": "{{URL_BASE}}peliculas",
-							"host": [
-								"{{URL_BASE}}peliculas"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Editar una pelicula",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Christopher Nolan\",\r\n  \"anioNacimiento\": 1970\r\n}"
-						},
-						"url": {
-							"raw": "{{URL_BASE}}peliculas/1",
-							"host": [
-								"{{URL_BASE}}peliculas"
-							],
-							"path": [
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Crear una pelicula",
+					"name": "Crear Actor",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"titulo\": \"Inception\",\r\n  \"genero\": \"Ciencia Ficción\",\r\n  \"fechaEstreno\": \"2010-07-16\",\r\n  \"directorId\": 1\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n  \"nombre\": \"Leonardo DiCaprio\"\n}"
 						},
 						"url": {
-							"raw": "{{URL_BASE}}peliculas",
+							"raw": "http://localhost:8080/api/v1/actores",
+							"protocol": "http",
 							"host": [
-								"{{URL_BASE}}peliculas"
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"actores"
 							]
 						}
-					},
-					"response": []
+					}
+				},
+				{
+					"name": "Listar Actores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/actores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"actores"
+							]
+						}
+					}
+				},
+				{
+					"name": "Obtener Actor por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/actores/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"actores",
+								"1"
+							]
+						}
+					}
 				}
 			]
 		},
 		{
-			"name": "Asignar actor al reparto",
+			"name": "Película",
 			"item": [
 				{
-					"name": "Asignar actor al reparto",
+					"name": "Crear Película",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"titulo\": \"Inception\",\n  \"genero\": \"Ciencia Ficción\",\n  \"fechaEstreno\": \"2010-07-16\",\n  \"directorId\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/peliculas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"peliculas"
+							]
+						}
+					}
+				},
+				{
+					"name": "Listar Películas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/peliculas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"peliculas"
+							]
+						}
+					}
+				},
+				{
+					"name": "Obtener Película por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/peliculas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"peliculas",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Actualizar Película",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"titulo\": \"Inception - Director's Cut\",\n  \"genero\": \"Ciencia Ficción\",\n  \"fechaEstreno\": \"2010-07-16\",\n  \"directorId\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/peliculas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"peliculas",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Eliminar Película",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/peliculas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"peliculas",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Asignar Actor a Película",
 					"request": {
 						"method": "POST",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{URL_BASE}}peliculas/1/actores/1",
+							"raw": "http://localhost:8080/api/v1/peliculas/1/actores/1",
+							"protocol": "http",
 							"host": [
-								"{{URL_BASE}}peliculas"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
+								"api",
+								"v1",
+								"peliculas",
 								"1",
 								"actores",
 								"1"
 							]
 						}
-					},
-					"response": []
+					}
 				}
 			]
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"requests": {},
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"requests": {},
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"key": "URL_BASE",
-			"value": ""
-		},
-		{
-			"key": "ACTORES",
-			"value": ""
 		}
 	]
 }
